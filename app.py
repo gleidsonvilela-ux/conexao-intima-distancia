@@ -21,149 +21,121 @@ socketio = SocketIO(
     ping_interval=25
 )
 
-# 🌐 BARALHO EXPANDIDO - 100% ADAPTADO PARA DISTÂNCIA
+# 🌐 BARALHO DE INTERAÇÃO REMOTA (FOCO EM WHATSAPP, ÁUDIOS, FOTOS E VÍDEO-RELÂMPAGO)
 ORIGINAL_CARDS = {
     "fase1": {
         "verdade": {
             "H": [
-                "De 0 a 10, quão ansioso {mandante} está para ver {alvo} na câmera e o que ela poderia mostrar agora para chegar ao 10?",
-                "Qual foi o pensamento mais safado que {mandante} teve com {alvo} hoje enquanto lembrava do último encontro de vocês?",
-                "Confesse para {alvo}: você prefere ver ela na câmera totalmente nua ou de lingerie provocante com salto?",
-                "Olhe para a câmera fixamente e diga para {alvo} qual parte do corpo dela você mais queria estar tocando agora.",
-                "Se você pudesse ver {alvo} usando qualquer lingerie nova na chamada de vídeo hoje, qual seria?",
-                "Qual foi a última fantasia que passou pela sua cabeça enquanto me via trocando de roupa ou por foto?",
-                "Qual foi o elogio mais safado que você queria me fazer no áudio hoje, mas guardou para o jogo?",
-                "Se você pudesse escolher um ângulo da câmera para eu manter pelos próximos 10 minutos, qual seria?",
-                "Qual das minhas fotos no seu celular você mais olha quando está com saudades e tesão de mim?",
-                "Qual foi a primeira coisa que você reparou no meu visual quando ligamos a câmera hoje?"
+                "De 0 a 10, quão ansioso {mandante} está hoje e o que {alvo} poderia te mandar em um áudio agora para chegar ao 10?",
+                "Qual foi o pensamento mais safado que {mandante} teve com {alvo} hoje enquanto pensava na vida?",
+                "Confesse no chat: você prefere receber uma foto de {alvo} totalmente nua ou de lingerie provocante com salto?",
+                "Envie uma mensagem de texto privada para {alvo} confessando qual parte do corpo dela você mais queria estar tocando agora.",
+                "Se você pudesse pedir uma foto surpresa de {alvo} usando qualquer peça do guarda-roupa dela hoje, qual seria?",
+                "Qual foi o elogio mais safado que você queria ter mandado em um áudio hoje, mas guardou para o jogo?",
+                "Qual das fotos secretas de {alvo} salvas no seu celular você mais olha quando está com saudades?",
+                "Confesse: qual foi o momento da semana em que você sentiu o maior tesão repentino pensando em {alvo}?"
             ],
             "M": [
-                "Diga para {alvo} o que ele faz na chamada de vídeo ou no tom de voz do áudio que te deixa mais molhada a distância?",
-                "Qual é o seu maior fetiche visual? Diga para {alvo} o que ele pode fazer na câmera agora que te ativa na hora.",
-                "Se você pudesse fazer um pedido proibido para {alvo} cumprir no vídeo agora, sem julgamentos, qual seria?",
-                "Qual brinquedo erótico seu você tem mais desejo de usar na frente da câmera hoje?",
-                "Se você pudesse mandar {alvo} tirar apenas uma peça de roupa específica agora na tela, o que seria?",
+                "Diga para {alvo} no áudio o que ele escreve ou fala no tom de voz que mais te deixa molhada a distância?",
+                "Qual é o seu maior fetiche visual? Diga para {alvo} que tipo de foto ele pode te mandar agora que te ativa na hora.",
+                "Se você pudesse fazer um pedido proibido para {alvo} cumprir por foto ou áudio agora, qual seria?",
+                "Qual brinquedo erótico seu você mais usou pensando em {alvo} enquanto estavam longe?",
                 "Qual foi a última conversa por mensagem nossa que te deixou com pensamentos pecaminosos o dia todo?",
-                "Se eu te desse o controle da minha câmera por 1 minuto, qual parte do meu corpo você mandaria eu aproximar da lente?",
-                "Qual é o estilo de roupa ou cueca minha que te dá mais tesão de ver através do vídeo?",
-                "Se você pudesse ouvir um sussurro meu no fone agora, qual frase safada você pediria para eu dizer?"
+                "Qual é o estilo de foto ou visual de {alvo} que mais desperta seus desejos no meio da semana?",
+                "Se você pudesse receber um áudio de 10 segundos de {alvo} agora, qual frase safada você pediria para ele sussurrar?"
             ],
             "A": [
-                "Qual foi o momento mais marcante ou ousado que já viveram em uma chamada de vídeo até hoje?",
-                "Se vocês tivessem que escolher um brinquedo erótico para usar em sincronia no vídeo hoje, qual seria?",
-                "Diga uma palavra ou frase safada que o outro sussurra no áudio que te desmonta por inteiro.",
-                "Qual música ou ritmo combina perfeitamente com a energia da nossa chamada hoje?",
-                "Se a conexão caísse agora, qual seria a primeira mensagem proibida que você mandaria no chat?"
+                "Qual foi a foto ou áudio mais marcante e ousado que já trocaram no WhatsApp até hoje?",
+                "Se a conexão caísse agora, qual seria a primeira mensagem proibida que você mandaria no chat?",
+                "Vocês sentem que a saudade da distância aumenta a intensidade e o tesão na hora do reencontro presencial?",
+                "Qual figurinha ou emoji safado do WhatsApp melhor resume o que vocês querem fazer um com o outro?"
             ]
         },
         "desafio": {
             "H": [
-                "{mandante}, tire a sua camisa devagar na frente da câmera, fazendo uma pose provocante só para {alvo}.",
-                "{mandante} deve enviar um áudio de 15 segundos no WhatsApp com tom de voz bem grave e sussurrado, dizendo exatamente o que vai fazer com {alvo} no próximo final de semana.",
-                "{mandante}, ajuste o ângulo da sua câmera para focar no seu abdômen/peitoral e faça um carinho na própria pele por 1 minuto enquanto {alvo} assiste.",
-                "{mandante}, pegue o celular, aproxime a câmera bem perto dos seus lábios e dê um beijo lento e provocante na tela para {alvo}.",
-                "{mandante} deve dar início a um **Conto Erótico**: comece a inventar uma história curta e safada envolvendo vocês dois em um hotel. Fale por 1 minuto na chamada.",
-                "{mandante}, morda o seu próprio lábio inferior, olhe bem fundo na lente da câmera por 30 segundos e diga o quanto {alvo} está gostosa hoje.",
-                "{mandante} deve tirar uma foto surpresa do seu próprio peitoral/abdômen pelo celular e enviar no WhatsApp de {alvo} agora.",
-                "{mandante}, deite de costas na cama, coloque o celular de lado e faça uma massagem no próprio peito por 1 minuto olhando para a tela."
+                "{mandante} deve enviar um áudio no WhatsApp de 15 segundos com tom de voz bem grave e sussurrado, dizendo exatamente o que vai fazer com {alvo} no próximo encontro. 🎙️🔥",
+                "{mandante} deve tirar uma foto do seu peitoral/abdômen (pode ser no espelho) e enviar como **Visualização Única** no WhatsApp de {alvo}. 📸",
+                "{mandante}, puxe a gola da camisa ou fique sem camisa, tire uma foto com seu olhar mais dominante e envie no chat do WhatsApp.",
+                "{mandante} deve gravar um áudio narrando em 1 minuto o início de um **Conto Erótico** imaginando um encontro surpresa de vocês dois em um hotel.",
+                "{mandante} deve mandar uma foto do seu perfume ou relógio/acessório favorito no WhatsApp com a legenda: 'Guardando para quando eu te pegar'."
             ],
             "M": [
-                "{mandante}, prenda o seu cabelo na câmera, olhe para {alvo} com o olhar mais safado que tiver e lamba os seus próprios lábios devagar.",
-                "{mandante}, faça um biquinho sexy e passe as mãos pelos seus próprios seios por cima da roupa olhando para a câmera.",
-                "{mandante}, ande lentamente de salto alto/lingerie na frente da câmera, faça uma pose provocante e morda o lábio inferior por 30 segundos.",
-                "SPOILER REMOTO: {mandante} deve mandar uma foto surpresa do seu decote ou lingerie no WhatsApp agora para {alvo} guardar.",
-                "{mandante}, aproxime a câmera do seu pescoço/saboneteira e dê um suspiro bem provocante no microfone por 20 segundos.",
-                "{mandante}, dê uma volta lenta na frente da câmera mostrando o seu visual de costas e aperte a própria bunda provocando {alvo}.",
-                "{mandante} deve puxar levemente a alça da lingerie ou blusa na câmera e manter o olhar fixo na lente por 45 segundos.",
-                "{mandante}, mande um áudio no WhatsApp de 10 segundos no tom mais dengoso e safado que conseguir dizendo o quanto quer o corpo de {alvo}."
+                "SPOILER REMOTO: {mandante} deve tirar uma foto do seu decote ou da lingerie e enviar como **Visualização Única** no WhatsApp de {alvo}. 📸🔞",
+                "{mandante} deve gravar um áudio no WhatsApp no tom de voz mais dócil e safado dizendo o quanto quer o corpo de {alvo} hoje. 🎙️",
+                "{mandante}, tire uma foto provocante da sua perna/coxa ou salto alto e envie no chat de {alvo} com uma provocação.",
+                "{mandante} deve tirar uma selfie fazendo um biquinho sexy com batom ou mordendo os lábios e mandar no WhatsApp dele.",
+                "{mandante} deve mandar um áudio de 10 segundos no WhatsApp dando 3 suspiros bem provocantes bem perto do microfone."
             ],
             "A": [
-                "Coloquem a mesma música sensual para tocar ao mesmo tempo no fundo das chamadas de vocês.",
-                "Ambos devem dar um gole na bebida e olhar fixamente para a câmera por 45 segundos sem rir e sem piscar.",
-                "DIRETOR DE CINEMA: {mandante} ganha o direito de escolher o ângulo da câmera de {alvo} pelas próximas 2 rodadas.",
-                "PRINT SECRETO: {mandante} deve pedir para {alvo} fazer uma pose sensual e tirar um print da tela para guardar como lembrança."
+                "TRILHA SONORA MÚTUA: Ambos devem abrir o aplicativo de música e enviar o link da música mais sensual da sua playlist no chat agora.",
+                "RELAXAMENTO À DISTÂNCIA: Gravarem simultaneamente um áudio de 15 segundos respirando fundo e mandarem um para o outro."
             ]
         }
     },
     "fase2": {
         "verdade": {
             "H": [
-                "O que te dá mais tesão na distância: ouvir os gemidos de {alvo} no áudio ou ver a expressão facial dela no vídeo?",
-                "Se {alvo} te mostrasse a intimidade dela na câmera agora, qual o primeiro comando de voz que você daria para ela?",
-                "Qual o maior tesão de ver {alvo} se tocando na sua frente através do vídeo?",
-                "Se eu te dissesse que estou sem calcinha/cueca agora na chamada, qual seria a sua reação imediata?",
-                "Qual é a posição de câmera em que eu fico mais irresistível para você no vídeo?"
+                "O que te dá mais tesão na distância: ouvir os gemidos de {alvo} por áudio ou receber uma foto de visualização única?",
+                "Se {alvo} te mandasse um vídeo curto de 10 segundos agora, qual parte do corpo dela você exigiria ver?",
+                "Qual a sensação de saber que {alvo} está se tocando do outro lado da tela pensando unicamente em você?"
             ],
             "M": [
-                "Qual foi a última vez que você se masturbou pensando em {alvo} e qual foi a cena exata que você imaginou?",
-                "Olhando para {alvo} na tela agora, qual o nível de desejo de ver ele totalmente nu e ereto?",
-                "Qual a sensação de se tocar na frente da câmera sabendo o fetiche e o controle que isso exerce sobre ele?",
-                "Se eu te prometesse realizar um desejo de exibição ao vivo na câmera hoje, o que você me pediria?",
-                "Existe algum brinquedo do nosso estoque que você sente vergonha de usar no vídeo, mas tem vontade?"
+                "Qual foi a última vez que você se masturbou pensando em {alvo} e qual foi a cena exata que imaginou?",
+                "Olhando para as mensagens de {alvo} agora, qual o nível de desejo de ver uma foto dele totalmente nu?",
+                "Qual a sensação de enviar uma foto ousada sabendo o controle e a loucura que isso causa na mente dele?"
             ],
             "A": [
-                "Vocês preferem quando o clima da chamada é lento e provocante ou quando é direto e dominante?",
-                "Qual de vocês fica mais ousado e sem limites na câmera quando o vinho/bebida começa a fazer efeito?",
-                "Qual foi a conversa ou vídeo mais explícito que já trocamos na distância até hoje?"
+                "Vocês preferem quando a troca de provocações a distância é lenta ao longo do dia ou intensa de uma vez só à noite?",
+                "Qual foi o momento mais arriscado ou inusitado em que mandaram um áudio/foto safada um para o outro?"
             ]
         },
         "desafio": {
             "H": [
-                "{mandante}, abra a sua calça na câmera, coloque a mão por dentro da cueca e toque o seu membro ereto por 1 minuto enquanto olha fixamente para {alvo}.",
-                "{mandante}, fique totalmente nu da cintura para cima e dê ordens sussurradas pelo áudio de como quer que {alvo} toque os próprios seios.",
-                "{mandante}, pegue um cubo de gelo ou óleo e passe pelo seu peitoral e abdômen ao vivo na câmera por 1 minuto.",
-                "{mandante} deve deitar na cama com a câmera posicionada de cima e se masturbar lentamente no ritmo que {alvo} comandar por 1 minuto e meio.",
-                "{mandante}, tire a cueca/shorts por baixo da câmera e jogue na lente, mostrando para {alvo} que ficou totalmente nu.",
-                "{mandante}, encoste o celular na cabeceira e passe as unhas suavemente pelo peitoral enquanto geme baixo no microfone."
+                "{mandante} deve abrir a calça, tirar uma foto do seu membro rígido por cima ou por dentro da cueca e mandar como **Visualização Única** no WhatsApp. 🔞",
+                "CHAMADA RELÂMPAGO: {mandante} deve ligar em vídeo no WhatsApp por **exatamente 45 segundos** para mostrar seu peitoral nu e desligar sem falar nada! 📹⚡",
+                "{mandante} deve gravar um áudio de 30 segundos dando ordens sussurradas e firmes de como quer que {alvo} toque os próprios seios agora.",
+                "{mandante} deve passar um cubo de gelo ou óleo no peitoral, tirar uma foto com a pele brilhando e mandar no WhatsApp."
             ],
             "M": [
-                "{mandante}, tire o seu sutiã/blusa de forma bem lenta na câmera, deixando seus seios totalmente livres para {alvo} ver.",
-                "{mandante}, tire a sua calcinha discretamente por baixo da roupa e jogue na câmera olhando fixamente para a lente.",
-                "{mandante}, deite-se na cama, passe gel lubrificante nos seus dedos e comece a massagear a sua intimidade por 1 minuto e meio enquanto {alvo} assiste.",
-                "{mandante}, pegue o vibrador ou sugador de clitóris (a rosa), ligue na velocidade média e use na sua intimidade na câmera por 2 minutos seguidos.",
-                "{mandante}, apoie o celular na cama, fique na posição de quatro virada de costas para a câmera e rebole devagar mostrando a lingerie/bunda nua por 1 minuto.",
-                "{mandante}, coloque o seu dedo indicador na boca, chupe provocativamente olhando para a tela e depois passe o mesmo dedo no seu mamilo nu."
+                "{mandante} deve tirar o sutiã/blusa, fazer uma foto bem angulada dos seus seios nus e mandar como **Visualização Única** no WhatsApp de {alvo}. 📸",
+                "CHAMADA RELÂMPAGO: {mandante} deve fazer uma chamada de vídeo no WhatsApp de **45 segundos** mostrando sua lingerie/corpo de cima a baixo e desligar! 📹⚡",
+                "{mandante} deve gravar um áudio de 20 segundos gemendo baixo no microfone enquanto passa os dedos na própria intimidade.",
+                "{mandante} deve tirar a calcinha, tirar uma foto apenas da calcinha na cama e enviar no WhatsApp com a legenda: 'Fiquei sem'."
             ],
             "A": [
-                "SESSÃO DE FOTOS PRIVADA: {mandante} deve fazer 3 poses sensuais na câmera para {alvo} tirar print do celular e guardar como troféu.",
-                "AMBOS NUS DA CINTURA PARA CIMA: Tirem as blusas/camisas imediatamente para o restante desta fase.",
-                "RESTRIÇÃO DE SOM: A partir de agora, só é permitido se comunicar por sussurros no microfone até a fase mudar."
+                "FLAGRANTE DA NOITE: Ambos devem tirar um print da tela do próprio celular agora e enviar no chat para provar como estão acompanhando o jogo.",
+                "RESTRIÇÃO DE ÁUDIO: Pelas próximas 2 rodadas, todas as respostas só podem ser enviadas por **mensagens de voz sussurradas** no WhatsApp."
             ]
         }
     },
     "fase3": {
         "verdade": {
             "H": [
-                "De todas as vezes que jogamos a distância, qual foi o ângulo de {alvo} na tela que ficou gravado na sua memória?",
-                "Se você pudesse me ver gozando na câmera agora, em qual posição você gostaria que eu estivesse posicionado(a)?",
-                "Quão excitante é sentir a minha respiração ofegante no seu fone de ouvido durante o clímax?"
+                "Qual palavra ou comando de voz seu você sabe que faz {alvo} chegar ao limite mais rápido?",
+                "Qual a sensação de saber que a sua voz no fone de ouvido é o suficiente para fazer ela ter um orgasmo?"
             ],
             "M": [
-                "Qual palavra ou comando dominante de {alvo} no áudio te faz chegar mais rápido ao orgasmo na distância?",
-                "Se você pudesse congelar a imagem da tela agora para durar uma hora, qual ângulo visual você escolheria?",
-                "O fetiche de se exibir na câmera aumenta a sua intensidade de orgasmo comparado a se tocar sozinha?"
+                "Qual palavra sussurrada por {alvo} no áudio desarma totalmente você durante a sua masturbação?",
+                "O fetiche de mandar uma foto do pós-orgasmo para ele aumenta o seu nível de tesão?"
             ],
             "A": [
-                "Quão mais forte fica o desejo de se encontrarem pessoalmente depois de uma noite intensa de jogo a distância?",
-                "Qual posição no vídeo deixa os dois mais conectados visualmente e emocionalmente durante a masturbação?"
+                "Quão mais forte fica a ansiedade do reencontro presencial depois de cumprirem esta Fase 3 à distância?"
             ]
         },
         "desafio": {
             "H": [
-                "{mandante}, fique completamente nu na câmera e comece a se masturbar intensamente focado no rosto de {alvo} até a próxima carta.",
-                "{mandante}, ajuste a câmera para focar no seu membro ereto e se masturbe no ritmo dos gemidos que {alvo} emitir ao vivo.",
-                "COMANDO DOMINANTE: {mandante} deve dar ordens diretas e firmes pelo áudio dizendo exatamente onde e como {alvo} deve tocar a própria intimidade até ela suspirar alto.",
-                "{mandante}, deite de costas, segure o celular com uma mão e use a outra para se masturbar acelerado olhando bem no fundo dos olhos de {alvo} na tela."
+                "COMANDO DOMINANTE: {mandante} deve mandar um áudio de 45 segundos no WhatsApp dando instruções detalhadas de como {alvo} deve se masturbar até suspirar alto. 🎙️🔥",
+                "{mandante} deve se masturbar agora ouvindo os áudios de {alvo}. Assim que gozar, envie uma mensagem de texto simples dizendo: 'Gozei pensando em você'.",
+                "VÍDEO RELÂMPAGO FINAL: {mandante} deve gravar um vídeo curto de 10 segundos no WhatsApp focando no seu peitoral/membro e mandar em visualização única."
             ],
             "M": [
-                "{mandante}, fique totalmente nua na câmera, abra bem as pernas e use os dedos ou vibrador na sua intimidade mantendo contato visual com a lente por 2 minutos.",
-                "{mandante}, sente-se de frente para a câmera e cavalgue no ar ou no dildo/vibrador no ritmo que {alvo} mandar por 2 minutos.",
-                "ORGASMO GUIADO: {mandante} deve focar o estímulo no seu clitóris com o brinquedo ou dedos enquanto escuta {alvo} narrando o que faria se estivessem no mesmo quarto.",
-                "{mandante}, posicione a câmera bem de perto na sua intimidade e use o sugador/vibrador no nível máximo até a respiração falhar."
+                "ORGASMO GUIADO: {mandante} deve se tocar usando os dedos ou brinquedo focado no clitóris. Assim que atingir o clímax, mande um áudio de 10 segundos arfando no microfone. 🎙️💦",
+                "FOTO DO CLÍMAX: {mandante} deve tirar uma foto da sua intimidade molhada ou do seu rosto logo após gozar e mandar como **Visualização Única** no WhatsApp.",
+                "VÍDEO RELÂMPAGO FINAL: {mandante} deve gravar um vídeo curto de 10 segundos no WhatsApp mostrando o uso do brinquedo/dedos e mandar em visualização única."
             ],
             "A": [
-                "CLÍMAX SINCRONIZADO: Esqueçam as cartas. Mantenham as câmeras ligadas e se estimulem ao mesmo tempo até que os dois atinjam o orgasmo ao vivo no vídeo!",
-                "DESEJO FINAL: Posicionem os celulares para focar nos corpos e façam uma masturbação mútua guiada apenas pelos olhares e gemidos no fone."
+                "CLÍMAX SINCRONIZADO REMOTO: Esqueçam as cartas. Liguem uma **Chamada de Áudio de 3 minutos** no WhatsApp e masturbem-se juntos ouvindo a respiração um do outro até os dois gozarem!",
+                "PROMESSA DO REENCONTRO: Mande uma mensagem de texto no WhatsApp detalhando a primeira coisa sem limites que você vai fazer assim que abrirem a porta do quarto no próximo encontro."
             ]
         }
     }
@@ -172,79 +144,67 @@ ORIGINAL_CARDS = {
 ORIGINAL_DICE = {
     "acao_corpo": {
         "acoes": [
-            "Lamber os próprios lábios olhando fixo para a câmera e para",
-            "Mostrar bem de perto na tela",
-            "Passar a ponta dos dedos bem devagar por",
-            "Dar mordidinhas provocantes na própria boca pensando em",
-            "Passar óleo/gel corporal e destacar no vídeo",
-            "Fazer carícias lentas e encarar a lente pensando em"
+            "Mandar um áudio sussurrado no WhatsApp sobre",
+            "Tirar uma foto de visualização única mostrando",
+            "Fazer uma chamada de vídeo relâmpago de 30 segundos focando em",
+            "Gravar um vídeo curto de 10 segundos destacando"
         ],
         "corpo": {
-            "H": ["o peitoral nu", "o abdômen ereto", "o membro ereto", "a virilha na câmera"],
-            "M": ["os mamilos nus", "a lingerie provocante", "a intimidade molhada", "as coxas abertas no vídeo"],
-            "A": ["os lábios", "o pescoço", "a virilha", "as coxas na câmera"]
+            "H": ["o peitoral nu", "o abdômen rígido", "o membro por dentro da cueca", "os lábios no microfone"],
+            "M": ["os mamilos nus", "a lingerie sexy", "a intimidade molhada", "as coxas no espelho"],
+            "A": ["o pescoço", "a virilha", "os lábios"]
         }
     },
     "posicao_local": {
-        "locais": ["na cama com iluminação baixa", "no chão encostado na parede", "na cadeira/poltrona de frente para a câmera", "na beira da cama com ângulo elevado"],
+        "locais": ["na cama com luz apagada", "na frente do espelho do banheiro", "na cadeira de frente para o celular"],
         "posicoes_por_local": {
-            "na cama com iluminação baixa": ["Deitados de costas masturbando-se para o vídeo", "Posição de quatro focando o quadril na tela", "De lado em posição de conchinha segurando o celular"],
-            "no chão encostado na parede": ["Sentado(a) com pernas abertas mostrando o estímulo", "Apoiado(a) de joelhos olhando para a lente"],
-            "na cadeira/poltrona de frente para a câmera": ["Rebolando de salto alto na cadeira", "Sentado(a) na ponta com pernas elevadas"],
-            "na beira da cama com ângulo elevado": ["Deitado(a) com a câmera vinda de cima", "Apoiando as pernas para cima mostrando o corpo inteiro"]
+            "na cama com luz apagada": ["Tirar foto deitada(o) de costas", "Gravar áudio de conchinha na cama"],
+            "na frente do espelho do banheiro": ["Tirar foto do corpo inteiro no espelho", "Foto do ângulo de costas"],
+            "na cadeira de frente para o celular": ["Foto sentada(o) na ponta da cadeira", "Áudio de voz marcante na cadeira"]
         }
     },
     "brinquedos_acessorios": {
         "acoes": [
-            "Usar o sugador de clitóris/vibrador ao vivo na câmera em",
-            "Usar uma venda nos olhos e se tocar guiado apenas pela voz do par em",
-            "Usar uma lingerie ou salto alto e focar a tela em",
-            "Passar um cubo de gelo no corpo nu ao vivo para"
+            "Mandar foto usando a lingerie/cueca favorita em",
+            "Gravar áudio usando o vibrador/sugador ligado ao fundo em",
+            "Tirar foto com fone de ouvido e olhar provocante para"
         ],
         "foco": {
-            "H": ["o membro ereto", "o abdômen", "o peitoral"],
-            "M": ["o clitóris", "os mamilos", "a bunda nua"],
-            "A": ["a virilha", "as coxas", "o pescoço"]
+            "H": ["o membro ereto", "o abdômen"],
+            "M": ["o clitóris", "os mamilos"],
+            "A": ["a virilha", "o pescoço"]
         }
     },
     "clima_intensidade": {
         "estilos": [
-            "Voz sussurrada e tom extremamente dominante pelo áudio",
-            "Provocação total: se toque por 1 minuto na tela, mas pare antes de gozar",
-            "Fazer o estímulo de olhos fechados se guiando pela respiração do outro",
-            "Movimentos ultra lentos focados apenas nas expressões do rosto"
+            "Tom de voz sussurrado e extremamente dominante",
+            "Provocação total: mande a foto, mas proíba o par de se tocar por 5 minutos",
+            "Comunicação apenas por emojis e figurinhas de fetiche no WhatsApp"
         ],
         "restricoes": [
-            "sem poder emitir gemidos altos (apenas sussurros no microfone)",
-            "mantendo contato visual ininterrupto com a lente da câmera",
-            "falando palavras sujas e confissões safadas no áudio ao vivo",
-            "com as mãos presas ou segurando a câmera sem piscar"
+            "usando apenas fotos de visualização única (View Once)",
+            "sem poder digitar nada (apenas mensagens de voz)",
+            "com a luz do quarto totalmente apagada"
         ]
     }
 }
 
 ORIGINAL_CHALLENGES_TIME = [
-    "{mandante} deve se tocar na câmera por 60 segundos sem emitir nenhum som. Se gemer alto antes do tempo, {alvo} ganha 1 ponto!",
-    "{mandante} deve aproximar o microfone da boca e descrever a coisa mais proibida que quer fazer no próximo encontro presencial por 45 segundos.",
-    "{mandante} deve manter o vibrador/sugador na intimidade por 60 segundos seguidos sem fechar os olhos na câmera.",
-    "{mandante} deve olhar fixamente para a tela e se masturbar em ritmo acelerado por 45 segundos sem desviar o olhar de {alvo}.",
-    "{mandante} deve sussurrar uma história erótica no microfone por 60 segundos sem pausar."
+    "{mandante} deve gravar um áudio de 60 segundos no WhatsApp narrando um desejo proibido sem pausar para respirar!",
+    "{mandante} deve enviar uma foto de visualização única a cada 15 segundos durante 1 minuto (4 fotos seguidas).",
+    "{mandante} deve ligar em áudio no WhatsApp e dar 3 suspiros bem provocantes ininterruptos durante 45 segundos."
 ]
 
 ORIGINAL_NEVER_CARDS = [
     "Eu nunca tirei uma foto ousada para enviar para o meu par no meio do expediente de trabalho.",
-    "Eu nunca me masturbei assistindo a uma gravação antiga nossa enquanto estávamos longe.",
-    "Eu nunca fiquei com tanta vontade do meu par a distância que precisei parar o que estava fazendo para mandar um áudio proibido.",
-    "Eu nunca fingi que a minha câmera caiu ou travou só para ajeitar a roupa ou o ângulo de um jeito mais sexy.",
-    "Eu nunca me toquei pensando em uma chamada de vídeo específica que fizemos há semanas."
+    "Eu nunca me masturbei assistindo a um vídeo ou áudio antigo nosso enquanto estávamos longe.",
+    "Eu nunca fiquei com tanta vontade do meu par a distância que precisei parar o que estava fazendo para mandar um áudio proibido."
 ]
 
 ORIGINAL_PUNISHMENTS = [
-    "Tirar mais uma peça de roupa ao vivo na câmera agora mesmo.",
-    "Ficar sem falar nenhuma palavra e apenas cumprir os comandos de voz do par até a próxima rodada.",
-    "Enviar uma foto extremamente provocante e sem filtro no chat agora.",
-    "Dar 3 suspiros bem altos colados no microfone do celular.",
-    "Manter a câmera focada na sua intimidade pelas próximas duas rodadas sem tirar."
+    "Enviar uma foto de visualização única sem filtro no WhatsApp agora mesmo.",
+    "Ficar sem mandar nenhuma mensagem de texto e responder apenas por áudios de voz pelas próximas 2 rodadas.",
+    "Mandar um áudio de 10 segundos dando 3 gemidos baixinhos no microfone do celular."
 ]
 
 ACTIVE_ROOMS = {}
@@ -429,7 +389,7 @@ def handle_draw(data):
         text_formatado = text.replace("{mandante}", mandante_nome).replace("{alvo}", alvo_nome)
         
         pontos_fase = {"fase1": 1, "fase2": 2, "fase3": 4}[fase]
-        fase_labels = {"fase1": "AQUECIMENTO", "fase2": "EXIBIÇÃO & VÍDEO", "fase3": "ORGÁSMO GUIADO"}
+        fase_labels = {"fase1": "PROVOCAÇÃO REMOTA", "fase2": "MÍDIAS & AÇÃO", "fase3": "CLÍMAX GUIADO"}
         
         game_state["current_cards"] = {
             "fase_key": f"cards_{fase}_{tipo}",
@@ -467,30 +427,30 @@ def handle_roll_dice(data):
         acao = random.choice(ORIGINAL_DICE["acao_corpo"]["acoes"])
         opcoes_validas = ORIGINAL_DICE["acao_corpo"]["corpo"]["A"] + ORIGINAL_DICE["acao_corpo"]["corpo"][genero_alvo]
         corpo = random.choice(opcoes_validas)
-        resultado = f"🎲 [AÇÃO & CÂMERA]\n\n👉 {nome_mandante} deve: {acao.upper()} ➡️ {corpo.upper()} por 45 segundos ao vivo na tela!"
+        resultado = f"🎲 [AÇÃO & MÍDIA]\n\n👉 {nome_mandante} deve: {acao.upper()} ➡️ {corpo.upper()} de {nome_alvo}!"
     
     elif chosen_cat == "posicao_local":
         loc = random.choice(ORIGINAL_DICE["posicao_local"]["locais"])
         pos = random.choice(ORIGINAL_DICE["posicao_local"]["posicoes_por_local"][loc])
-        resultado = f"🎲 [ÂNGULO & POSIÇÃO]\n\n👉 Posicione a câmera:\n⚡ {pos.upper()}\n📍 Local: {loc.upper()}!"
+        resultado = f"🎲 [FOTO / ÂNGULO]\n\n👉 Tire a foto ou faça a ação:\n⚡ {pos.upper()}\n📍 Local: {loc.upper()}!"
         
     elif chosen_cat == "brinquedos_acessorios":
         acao = random.choice(ORIGINAL_DICE["brinquedos_acessorios"]["acoes"])
         opcoes_validas = ORIGINAL_DICE["brinquedos_acessorios"]["foco"]["A"] + ORIGINAL_DICE["brinquedos_acessorios"]["foco"][genero_alvo]
         foco = random.choice(opcoes_validas)
-        resultado = f"🎲 [BRINQUEDOS & VÍDEO]\n\n👉 {nome_mandante} deve:\n⚡ {acao.upper()} ➡️ {foco.upper()}."
+        resultado = f"🎲 [BRINQUEDOS & FOTOS]\n\n👉 {nome_mandante} deve:\n⚡ {acao.upper()} ➡️ {foco.upper()}."
         
     elif chosen_cat == "clima_intensidade":
         estilo = random.choice(ORIGINAL_DICE["clima_intensidade"]["estilos"])
         restricao = random.choice(ORIGINAL_DICE["clima_intensidade"]["restricoes"])
-        resultado = f"🎲 [CLIMA REMOTO]\n\n👉 Realizem as carícias no vídeo com o clima:\n🔥 {estilo.upper()}\n⚠️ Regra: {restricao.upper()}!"
+        resultado = f"🎲 [CLIMA REMOTO]\n\n👉 Envie as mídias da rodada no clima:\n🔥 {estilo.upper()}\n⚠️ Regra: {restricao.upper()}!"
 
     game_state["current_cards"] = {
         "fase_key": "dice",
         "real_fase": "fase2",
         "type": "🎲 DADOS ERÓTICOS À DISTÂNCIA",
         "text": resultado,
-        "duration": 45 if chosen_cat == "acao_corpo" else 0,  
+        "duration": 0,  
         "points": 2
     }
     update_all_clients(room_id)
@@ -516,7 +476,7 @@ def handle_draw_time(data):
     game_state["current_cards"] = {
         "fase_key": "time",
         "real_fase": "fase2",
-        "type": "⏱️ DESAFIO DE RESISTÊNCIA NA CÂMERA",
+        "type": "⏱️ DESAFIO DE RESISTÊNCIA REMOTA",
         "text": text_formatado,
         "duration": discover_time(text),
         "points": 3
@@ -539,7 +499,7 @@ def handle_draw_never(data):
         "fase_key": "never",
         "real_fase": "fase1",
         "type": "🥂 EU NUNCA PICANTE",
-        "text": f"{text}\n\n👉 Se você já fez isso, DÊ UM GOLE NA BEBIDA AO VIVO E CONFESSE!",
+        "text": f"{text}\n\n👉 Se você já fez isso, DÊ UM GOLE NA BEBIDA E MANDE UM EMOJI NO CHAT!",
         "duration": 0,
         "points": 1
     }
@@ -565,7 +525,7 @@ def handle_punishment(data):
         "fase_key": "punishment",
         "real_fase": "fase1",
         "type": "🛑 CASTIGO COMPULSÓRIO",
-        "text": f"Você pulou a rodada!\nCumpra o seguinte castigo na câmera agora:\n\n{formatted_punish}",
+        "text": f"Você pulou a rodada!\nCumpra o seguinte castigo no WhatsApp agora:\n\n{formatted_punish}",
         "duration": 0,  
         "points": 0
     }
@@ -625,13 +585,13 @@ def handle_end_game(data):
         
     if p1_pts > p2_pts:
         vencedor = f"🏆 {p1_name.upper()} MANDOU NA NOITE REMOTA!"
-        sub = f"Com {p1_pts} pontos contra {p2_pts} de {p2_name}. Chegou a hora de cobrar o seu desejo ao vivo na câmera! 🔥"
+        sub = f"Com {p1_pts} pontos contra {p2_pts} de {p2_name}. Chegou a hora de cobrar o seu desejo pelo WhatsApp! 🔥"
     elif p2_pts > p1_pts:
         vencedor = f"🏆 {p2_name.upper()} MANDOU NA NOITE REMOTA!"
-        sub = f"Com {p2_pts} pontos contra {p1_pts} de {p1_name}. Chegou a hora de cobrar o seu desejo ao vivo na câmera! 🔥"
+        sub = f"Com {p2_pts} pontos contra {p1_pts} de {p1_name}. Chegou a hora de cobrar o seu desejo pelo WhatsApp! 🔥"
     else:
         vencedor = "⚖️ EMPATE ARDENTE À DISTÂNCIA!"
-        sub = f"Ambos terminaram com {p1_pts} pontos! Empate no prazer... Decidam na tela quem vai pagar o desejo agora! 😉👅"
+        sub = f"Ambos terminaram com {p1_pts} pontos! Empate no prazer... Decidam no chat quem vai pagar o desejo agora! 😉👅"
         
     socketio.emit('game_update', {
         'is_my_turn': False,
