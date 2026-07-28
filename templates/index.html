@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Íntima — À Distância 🌐🔥</title>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #05010d; color: #fff; text-align: center; padding: 20px; margin: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .container { max-width: 400px; margin: auto; }
+        input, button, select {
+            width: 100%; padding: 14px; margin: 10px 0; border-radius: 8px; border: none; font-size: 16px; box-sizing: border-box;
+        }
+        input { background: #0f0420; color: white; border: 1px solid #9b00e8; }
+        button { background: linear-gradient(90deg, #9b00e8, #ff2a6d); color: white; font-weight: bold; cursor: pointer; }
+        button:disabled { background: #222 !important; color: #555 !important; border: 1px solid #333 !important; }
+        
+        .instruction-box {
+            background: #0d021a; border: 1px solid #9b00e8; border-radius: 12px; padding: 20px; text-align: left; margin: 20px 0;
+        }
+        .instruction-box h3 { color: #ff2a6d; margin-top: 0; font-size: 16px; text-transform: uppercase; border-bottom: 1px solid #3d0519; padding-bottom: 8px;}
+        .instruction-box ul { padding-left: 20px; margin: 10px 0; color: #ffe6ee; font-size: 14px; line-height: 1.5; }
+        
+        .card-box {
+            background: linear-gradient(135deg, #130121 0%, #3d0537 100%);
+            border: 2px solid #9b00e8; border-radius: 12px; padding: 25px; margin: 20px 0; min-height: 150px;
+            box-shadow: 0 0 15px rgba(155, 0, 232, 0.3);
+        }
+        .card-type { font-weight: bold; color: #ff2a6d; letter-spacing: 2px; margin-bottom: 15px; font-size: 16px; text-transform: uppercase;}
+        .card-text { font-size: 18px; line-height: 1.5; color: #ffe6ee; white-space: pre-line; }
+
+        .phase-block { background: #0d021a; border: 1px solid #3d0537; border-radius: 10px; padding: 12px; margin: 15px 0; text-align: left; }
+        .phase-title { font-weight: bold; color: #ffb7b2; font-size: 13px; margin-bottom: 8px; display: flex; justify-content: space-between; }
+        .vod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .btn-v { background: linear-gradient(90deg, #2c3e50, #3498db); font-size: 14px; padding: 10px; margin: 0;}
+        .btn-d { background: linear-gradient(90deg, #d35400, #e67e22); font-size: 14px; padding: 10px; margin: 0;}
+        
+        .btn-success { background: linear-gradient(90deg, #27ae60, #2ecc71); font-size: 18px; }
+        .btn-danger { background: linear-gradient(90deg, #c0392b, #e74c3c); font-size: 18px; }
+        
+        .turn-indicator { font-size: 16px; margin: 15px 0; color: #ffb7b2; font-weight: bold; background: #130224; padding: 10px; border-radius: 8px; border: 1px solid #9b00e8; }
+        .score-indicator { font-size: 14px; margin: 15px 0; color: #fff; font-weight: bold; background: #1f0438; padding: 10px; border-radius: 8px; border: 1px solid #ff2a6d; }
+        .gender-selector { display: flex; gap: 10px; margin: 10px 0; }
+        .selector-btn { background: #222; flex: 1; border: 1px solid #555; color: white; cursor: pointer; }
+        .selector-btn.active { background: #ff2a6d; border-color: #ff2a6d; font-weight: bold; }
+        
+        .room-sticky-badge { background: #130224; padding: 10px; border-radius: 8px; font-weight: bold; color: #9b00e8; border: 1px solid #9b00e8; font-size: 14px; margin-bottom: 15px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #9b00e8; text-shadow: 0 0 10px rgba(155,0,232,0.5);">🌐 Conexão À Distância</h1>
+        <div class="room-sticky-badge" id="persistent-room-badge">CONECTANDO...</div>
+
+        <!-- TELA 0: SALA -->
+        <div id="room-panel">
+            <p style="color: #ccc; margin-bottom: 20px;">Jogo de Vínculo & Provocação Remota 📹</p>
+            <button onclick="requestNewRoom()">➕ CRIAR SALA REMOTA</button>
+            <div style="margin: 20px 0; color: #555; font-weight: bold;">OU</div>
+            <input type="text" id="input-room-code" placeholder="CÓDIGO DA SALA (EX: ABCD)" maxlength="4" style="text-transform: uppercase; text-align: center;">
+            <button onclick="confirmExistingRoom()" style="background: #111; border: 1px solid #9b00e8; color: #9b00e8;">➡️ ENTRAR NA SALA DO PAR</button>
+        </div>
+
+        <!-- TELA 1: LOGIN -->
+        <div id="login-screen" style="display: none;">
+            <div class="gender-selector" id="gender-btn-container">
+                <button type="button" class="selector-btn" id="btn-H" onclick="setGender('H')">Homem 🧠</button>
+                <button type="button" class="selector-btn" id="btn-M" onclick="setGender('M')">Mulher 👑</button>
+            </div>
+            <input type="text" id="username" placeholder="Digite seu Nome">
+            <button onclick="showInstructions()" style="margin-top: 20px;">Avançar ➡️</button>
+        </div>
+
+        <!-- TELA 2: INSTRUÇÕES DEDICADAS -->
+        <div id="instruction-screen" style="display: none;">
+            <div class="instruction-box">
+                <h3>📹 PREPARAÇÃO DA CHAMADA</h3>
+                <ul>
+                    <li>Iniciem uma <strong>Chamada de Vídeo 📱</strong> (WhatsApp, Meet ou Zoom).</li>
+                    <li>Deixem o celular em um apoio/suporte estável com boa iluminação. 💡</li>
+                    <li>Deixem fones de ouvido à mão para ouvir os sussurros. 🎧</li>
+                    <li>Deixem brinquedos e géis ao alcance das mãos. 🧴🔞</li>
+                </ul>
+            </div>
+            <button onclick="joinGame()" style="background: #27ae60; font-size: 18px;">CONECTAR À DISTÂNCIA! 🚀</button>
+        </div>
+
+        <!-- TELA DE LOBBY -->
+        <div id="lobby-screen" style="display: none;">
+            <p style="color: #ffb7b2;">Aguardando o par entrar na sala remota...</p>
+            <button id="ready-btn" onclick="setReady()">Estou Pronto no Vídeo ✓</button>
+        </div>
+
+        <!-- TELA DO JOGO PRINCIPAL -->
+        <div id="game-screen" style="display: none;">
+            <div class="score-indicator" id="live-score-board">📊 Carregando placar...</div>
+            <div class="turn-indicator" id="turn-text">Carregando...</div>
+
+            <div id="category-selection-screen" style="display: none;">
+                <div class="phase-block">
+                    <div class="phase-title">
+                        <span>🧊 FASE 1: PROVOCAÇÃO REMOTA</span>
+                        <span id="label-f1-count">0/5</span>
+                    </div>
+                    <div class="vod-grid">
+                        <button class="btn-v" onclick="draw('fase1', 'verdade')">🤔 Verdade</button>
+                        <button class="btn-d" onclick="draw('fase1', 'desafio')">😈 Desafio</button>
+                    </div>
+                </div>
+
+                <div class="phase-block">
+                    <div class="phase-title">
+                        <span>🔥 FASE 2: EXIBIÇÃO & VÍDEO</span>
+                        <span id="label-f2-count">Bloqueado</span>
+                    </div>
+                    <div class="vod-grid">
+                        <button class="btn-v" id="btn-f2-v" onclick="draw('fase2', 'verdade')" disabled>🤔 Verdade</button>
+                        <button class="btn-d" id="btn-f2-d" onclick="draw('fase2', 'desafio')" disabled>😈 Desafio</button>
+                    </div>
+                </div>
+
+                <div class="phase-block">
+                    <div class="phase-title">
+                        <span>👅 FASE 3: ORGÁSMO GUIADO</span>
+                        <span id="label-f3-count">Bloqueado</span>
+                    </div>
+                    <div class="vod-grid">
+                        <button class="btn-v" id="btn-f3-v" onclick="draw('fase3', 'verdade')" disabled>🤔 Verdade</button>
+                        <button class="btn-d" id="btn-f3-d" onclick="draw('fase3', 'desafio')" disabled>😈 Desafio</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXIBIÇÃO DA CARTA -->
+            <div id="card-view-screen" style="display: none;">
+                <div class="card-box">
+                    <div class="card-type" id="card-title">DESAFIO</div>
+                    <div class="card-text" id="card-text">Carregando...</div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <button class="btn-success" onclick="finishTurn(true)">Cumprido na Câmera ✓</button>
+                    <button class="btn-danger" onclick="finishTurn(false)">Pular Rodada 🛑</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const socket = io({ transports: ['websocket', 'polling'] });
+        let myName = "", selectedGender = "", activeRoomId = "", activeGenderToken = "H";
+
+        function requestNewRoom() { socket.emit('create_room'); }
+        socket.on('room_created', (data) => {
+            activeRoomId = data.room_id;
+            document.getElementById('room-panel').style.display = 'none';
+            document.getElementById('login-screen').style.display = 'block';
+            document.getElementById('persistent-room-badge').innerText = `SALA REMOTA: ${activeRoomId}`;
+            document.getElementById('persistent-room-badge').style.display = 'block';
+        });
+
+        function confirmExistingRoom() {
+            const code = document.getElementById('input-room-code').value.trim().toUpperCase();
+            if(code.length !== 4) return alert("Código deve ter 4 letras!");
+            activeRoomId = code;
+            socket.emit('check_room_status', { room_id: activeRoomId });
+        }
+
+        socket.on('room_status_checked', (data) => {
+            if(data.valid) {
+                document.getElementById('room-panel').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'block';
+                document.getElementById('persistent-room-badge').innerText = `SALA CONECTADA: ${activeRoomId}`;
+                document.getElementById('persistent-room-badge').style.display = 'block';
+                if(data.creator_gender === 'H') setGender('M');
+                else if(data.creator_gender === 'M') setGender('H');
+            } else { alert("Sala não encontrada!"); }
+        });
+
+        function setGender(g) {
+            selectedGender = g;
+            document.getElementById('btn-H').classList.toggle('active', g === 'H');
+            document.getElementById('btn-M').classList.toggle('active', g === 'M');
+        }
+
+        function showInstructions() {
+            myName = document.getElementById('username').value.trim();
+            if(!selectedGender || !myName) return alert("Preencha nome e gênero!");
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('instruction-screen').style.display = 'block';
+        }
+
+        function joinGame() {
+            document.getElementById('instruction-screen').style.display = 'none';
+            socket.emit('join_game', { room_id: activeRoomId, name: myName, gender: selectedGender });
+        }
+
+        function setReady() { socket.emit('player_ready', { room_id: activeRoomId }); }
+        function draw(fase, tipo) { socket.emit('draw_card', { room_id: activeRoomId, fase: fase, type: tipo }); }
+        function finishTurn(exec) { socket.emit('next_turn', { room_id: activeRoomId, executed: exec, my_gender: activeGenderToken }); }
+
+        socket.on('game_update', function(state) {
+            document.getElementById('live-score-board').innerText = state.score_board;
+            activeGenderToken = state.active_gender;
+
+            if (state.game_started) {
+                document.getElementById('lobby-screen').style.display = 'none';
+                document.getElementById('game-screen').style.display = 'block';
+
+                let f1 = state.rounds_played[activeGenderToken]["fase1"] || 0;
+                let f2 = state.rounds_played[activeGenderToken]["fase2"] || 0;
+
+                document.getElementById('label-f1-count').innerText = `${f1}/5`;
+                document.getElementById('btn-f2-v').disabled = document.getElementById('btn-f2-d').disabled = (f1 < 5);
+                document.getElementById('label-f2-count').innerText = f1 >= 5 ? `${f2}/5` : "Bloqueado";
+                document.getElementById('btn-f3-v').disabled = document.getElementById('btn-f3-d').disabled = (f2 < 5 || f1 < 5);
+
+                if (state.card && state.card.text) {
+                    document.getElementById('category-selection-screen').style.display = 'none';
+                    document.getElementById('card-view-screen').style.display = 'block';
+                    document.getElementById('card-title').innerText = state.card.type;
+                    document.getElementById('card-text').innerText = state.card.text;
+                } else {
+                    document.getElementById('category-selection-screen').style.display = 'block';
+                    document.getElementById('card-view-screen').style.display = 'none';
+                }
+                document.getElementById('turn-text').innerText = `👉 VEZ DE: ${state.current_player_name.toUpperCase()}`;
+            } else {
+                document.getElementById('lobby-screen').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
