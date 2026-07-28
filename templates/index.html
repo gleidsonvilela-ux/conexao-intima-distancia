@@ -76,7 +76,7 @@
 <body>
     <div id="roulette-overlay">
         <div class="spinner"></div>
-        <h2 id="roulette-title" style="color:#9b00e8;">CONECTANDO CHAMADA...</h2>
+        <h2 id="roulette-title" style="color:#9b00e8;">SORTEANDO TURNO...</h2>
         <p style="color:#aaa;">Sorteando o comandante da rodada remota!</p>
     </div>
 
@@ -86,7 +86,7 @@
 
         <!-- TELA 0: SALA -->
         <div id="room-panel">
-            <p style="color: #ccc; margin-bottom: 20px;">Jogo de Vínculo & Provocação Remota 📹</p>
+            <p style="color: #ccc; margin-bottom: 20px;">Jogo de Vínculo & Provocação Remota 💬</p>
             <button onclick="requestNewRoom()">➕ CRIAR SALA REMOTA</button>
             <div style="margin: 20px 0; color: #555; font-weight: bold;">OU</div>
             <input type="text" id="input-room-code" placeholder="CÓDIGO DA SALA (EX: ABCD)" maxlength="4" style="text-transform: uppercase; text-align: center;">
@@ -105,8 +105,8 @@
                 <label style="font-size: 11px; color:#aaa; display:block; text-align:left; margin: 15px 0 2px 0; text-transform: uppercase; font-weight: bold;">Selecione o Jogo da Noite:</label>
                 <select id="game-type" onchange="toggleGameSetup()">
                     <option value="cards">📄 Baralho À Distância (Verdade/Desafio)</option>
-                    <option value="dice">🎲 Dados Eróticos na Câmera</option>
-                    <option value="time">⏱️ Desafio de Resistência no Vídeo</option>
+                    <option value="dice">🎲 Dados Eróticos & Mídias</option>
+                    <option value="time">⏱️ Desafio de Resistência Remota</option>
                     <option value="never">🥂 Eu Nunca Picante (Bebidas)</option>
                 </select>
 
@@ -114,9 +114,9 @@
                     <label style="font-size: 11px; color:#aaa; display:block; text-align:left; margin: 10px 0 2px 0; text-transform: uppercase; font-weight: bold;">Categoria do Dado:</label>
                     <select id="dice-category">
                         <option value="all">🔀 Misturar Todos (Aleatório)</option>
-                        <option value="acao_corpo">🎯 Ação & Câmera</option>
-                        <option value="posicao_local">📍 Ângulo & Posição</option>
-                        <option value="brinquedos_acessorios">🧸 Brinquedos & Vídeo</option>
+                        <option value="acao_corpo">🎯 Ação & Mídia</option>
+                        <option value="posicao_local">📍 Foto & Ângulo</option>
+                        <option value="brinquedos_acessorios">🧸 Brinquedos & Fotos</option>
                         <option value="clima_intensidade">⚠️ Clima Remoto</option>
                     </select>
                 </div>
@@ -125,15 +125,16 @@
             <button onclick="showInstructions()" style="margin-top: 20px;">Avançar ➡️</button>
         </div>
 
-        <!-- TELA 2: INSTRUÇÕES DEDICADAS -->
+        <!-- 🌟 TELA 2: ORIENTAÇÕES REFORMULADAS DO WHATSAPP -->
         <div id="instruction-screen" style="display: none;">
             <div class="instruction-box">
-                <h3>📹 PREPARAÇÃO DA CHAMADA</h3>
+                <h3>💬 PREPARAÇÃO DO AMBIENTE REMOTO</h3>
                 <ul>
-                    <li>Iniciem uma <strong>Chamada de Vídeo 📱</strong> (WhatsApp, Meet ou Zoom).</li>
-                    <li>Deixem o celular em um apoio/suporte estável com boa iluminação. 💡</li>
-                    <li>Deixem fones de ouvido à mão para ouvir os sussurros. 🎧</li>
-                    <li>Deixem brinquedos e géis ao alcance das mãos. 🧴🔞</li>
+                    <li>Deixem o <strong>WhatsApp 💬</strong> aberto em paralelo para enviar as mídias.</li>
+                    <li>Use a função de <strong>Visualização Única 📸 (1)</strong> para enviar fotos/vídeos secretos com privacidade total.</li>
+                    <li>Capriche nos <strong>Áudios Sussurrados 🎙️</strong> no microfone e use fones de ouvido.</li>
+                    <li>Cumpra as <strong>Chamadas Relâmpago 📹⚡</strong> no WhatsApp apenas quando a carta mandar!</li>
+                    <li>Deixe o vinho/bebida 🍷 e brinquedos 🧴 ao alcance das mãos.</li>
                 </ul>
             </div>
             <button onclick="joinGame()" style="background: #27ae60; font-size: 18px;">CONECTAR À DISTÂNCIA! 🚀</button>
@@ -143,7 +144,7 @@
         <div id="lobby-screen" style="display: none;">
             <p style="color: #ffb7b2;">Aguardando o par entrar na sala remota...</p>
             <div class="status-box" id="lobby-status-container" style="background:#130224; border:1px dashed #9b00e8; padding:15px; border-radius:8px; margin:15px 0;"></div>
-            <button id="ready-btn" onclick="setReady()">Estou Pronto no Vídeo ✓</button>
+            <button id="ready-btn" onclick="setReady()">Estou Pronto no WhatsApp ✓</button>
         </div>
 
         <!-- TELA DO JOGO PRINCIPAL -->
@@ -168,7 +169,7 @@
 
                     <div class="phase-block">
                         <div class="phase-title">
-                            <span>🔥 FASE 2: EXIBIÇÃO & VÍDEO</span>
+                            <span>🔥 FASE 2: MÍDIAS & AÇÃO</span>
                             <span id="label-f2-count">Bloqueado</span>
                         </div>
                         <div class="vod-grid">
@@ -179,7 +180,7 @@
 
                     <div class="phase-block">
                         <div class="phase-title">
-                            <span>👅 FASE 3: ORGÁSMO GUIADO</span>
+                            <span>👅 FASE 3: CLÍMAX GUIADO</span>
                             <span id="label-f3-count">Bloqueado</span>
                         </div>
                         <div class="vod-grid">
@@ -212,8 +213,8 @@
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:12px;">
                     <select id="editor-phase" onchange="refreshEditorList()">
                         <option value="fase1">Fase 1 (Provocação)</option>
-                        <option value="fase2">Fase 2 (Exibição)</option>
-                        <option value="fase3">Fase 3 (Orgásmo Guiado)</option>
+                        <option value="fase2">Fase 2 (Mídias)</option>
+                        <option value="fase3">Fase 3 (Clímax Guiado)</option>
                     </select>
                     <select id="editor-type" onchange="refreshEditorList()">
                         <option value="verdade">Verdades</option>
@@ -221,7 +222,7 @@
                     </select>
                 </div>
                 <div style="background:#130224; padding:12px; border-radius:6px; margin-bottom:15px; border:1px dashed #9b00e8;">
-                    <label style="font-size:11px; color:#bbb;">Quem deve executar esse desafio no vídeo?</label>
+                    <label style="font-size:11px; color:#bbb;">Quem deve executar essa ação no WhatsApp?</label>
                     <select id="new-card-executor" style="padding: 10px; margin: 5px 0 10px 0;"></select>
                     <textarea id="new-card-text" placeholder="Digite a nova carta..."></textarea>
                     <button onclick="addNewCardToArray()" style="margin-top:5px; padding:10px;">Salvar Carta Remota</button>
@@ -229,7 +230,7 @@
                 <div id="editor-cards-list" style="max-height:220px; overflow-y:auto; border:1px solid #3d0537; padding:5px; background:#05010d; border-radius:6px;"></div>
             </div>
 
-            <!-- EXIBIÇÃO DA CARTA E BOTOES -->
+            <!-- EXIBIÇÃO DA CARTA E BOTÕES -->
             <div id="card-view-screen" style="display: none;">
                 <div class="card-box">
                     <div class="card-type" id="card-title">DESAFIO</div>
@@ -243,7 +244,7 @@
 
                 <div id="finish-turn-controls" style="margin-top: 20px;">
                     <div id="control-buttons-layout">
-                        <button class="btn-success" id="btn-exec" onclick="finishTurnWithGender(true)">Cumprido na Câmera ✓</button>
+                        <button class="btn-success" id="btn-exec" onclick="finishTurnWithGender(true)">Enviado / Cumprido ✓</button>
                         <button class="btn-danger" id="btn-noexec" onclick="triggerPunishment()">Pular Rodada (Castigo 🛑)</button>
                     </div>
                 </div>
@@ -483,7 +484,7 @@
                     } else if (state.card.fase_key === 'game_over') {
                         layout.innerHTML = `<button class="btn-success" onclick="window.location.reload()">🔄 Criar Nova Sala Remota</button>`;
                     } else {
-                        layout.innerHTML = `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"><button class="btn-success" onclick="finishTurnWithGender(true)">Cumprido na Câmera ✓</button><button class="btn-danger" onclick="triggerPunishment()">Pular Rodada (Castigo 🛑)</button></div>`;
+                        layout.innerHTML = `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"><button class="btn-success" onclick="finishTurnWithGender(true)">Enviado / Cumprido ✓</button><button class="btn-danger" onclick="triggerPunishment()">Pular Rodada (Castigo 🛑)</button></div>`;
                     }
 
                     if (state.card.duration > 0 && state.card.fase_key !== 'game_over') {
