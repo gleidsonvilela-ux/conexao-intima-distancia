@@ -264,9 +264,15 @@ ORIGINAL_CHALLENGES_TIME = [
     "{mandante} deve enviar uma foto de visualização única a cada 15 segundos durante 1 minuto (4 fotos seguidas no WhatsApp).",
     "{mandante} deve ligar em áudio no WhatsApp e dar 3 suspiros bem provocantes ininterruptos durante 45 segundos.",
     "{mandante} tem 30 segundos para tirar uma foto do seu corpo sem camisa/sem lingerie e mandar no chat do WhatsApp!",
-    "{mandante} deve mandar 3 áudios seguidos de 10 segundos sussurrando frases afiadas no ouvido de {alvo} em menos de 1 minuto."
+    "{mandante} deve mandar 3 áudios seguidos de 10 segundos sussurrando frases afiadas no ouvido de {alvo} em menos de 1 minuto.",
+    "{mandante} deve se tocar usando os dedos/brinquedo na intimidade por 60 segundos sem emitir nenhum som no áudio. Se gemer, {alvo} ganha 2 pontos!",
+    "{mandante} deve abrir o gravador do WhatsApp e descrever em detalhes por 45 segundos a primeira coisa que vai fazer no corpo de {alvo} quando se encontrarem.",
+    "{mandante} tem 60 segundos para encontrar um acessório ou lingerie provocante no guarda-roupa e mandar a foto da peça no WhatsApp!",
+    "{mandante} deve gravar um vídeo de 15 segundos em visualização única focando no seu olhar/boca e mandando um recado dominador sem piscar.",
+    "{mandante} deve fazer uma massagem na própria pele (peitoral/coxas) com óleo ou creme e mandar uma foto da pele brilhando no WhatsApp em menos de 45 segundos.",
+    "{mandante} deve ligar a gravação de áudio e contar até 30 em tom sussurrado enquanto desliza as mãos por baixo da roupa.",
+    "{mandante} deve mandar um áudio de 45 segundos no WhatsApp revelando o lugar mais inusitado onde já teve vontade de ter um momento íntimo com {alvo}."
 ]
-
 ORIGINAL_NEVER_CARDS = [
     "Eu nunca tirei uma foto ousada para enviar para o meu par no meio do expediente de trabalho.",
     "Eu nunca me masturbei assistindo a um vídeo ou áudio antigo nosso enquanto estávamos longe.",
@@ -281,7 +287,8 @@ ORIGINAL_PUNISHMENTS = [
     "Ficar sem mandar nenhuma mensagem de texto e responder apenas por áudios de voz pelas próximas 2 rodadas.",
     "Mandar um áudio de 10 segundos dando 3 gemidos baixinhos no microfone do celular.",
     "Tirar mais uma peça de roupa e mandar uma foto do detalhe no chat do WhatsApp.",
-    "Confessar em um áudio de 20 segundos a última cena nossa em que você mais sentiu tesão."
+    "Confessar em um áudio de 20 segundos a última cena nossa em que você mais sentiu tesão.",
+    "Mandar uma figurinha ou foto provocante no WhatsApp com a legenda: 'Eu tentei fugir, mas falhei'."
 ]
 
 ACTIVE_ROOMS = {}
