@@ -12,12 +12,13 @@
             -webkit-tap-highlight-color: transparent;
         }
         .container { max-width: 400px; margin: auto; }
-        input, button, select {
+        input, button, select, textarea {
             width: 100%; padding: 14px; margin: 10px 0; border-radius: 8px; border: none; font-size: 16px; box-sizing: border-box;
         }
-        input { background: #0f0420; color: white; border: 1px solid #9b00e8; }
-        button { background: linear-gradient(90deg, #9b00e8, #ff2a6d); color: white; font-weight: bold; cursor: pointer; }
-        button:disabled { background: #222 !important; color: #555 !important; border: 1px solid #333 !important; }
+        input, select, textarea { background: #0f0420; color: white; border: 1px solid #9b00e8; }
+        textarea { resize: vertical; min-height: 80px; font-family: inherit; }
+        button { background: linear-gradient(90deg, #9b00e8, #ff2a6d); color: white; font-weight: bold; cursor: pointer; touch-action: manipulation; }
+        button:disabled { background: #222 !important; color: #555 !important; border: 1px solid #333 !important; cursor: not-allowed; opacity: 0.6; }
         
         .instruction-box {
             background: #0d021a; border: 1px solid #9b00e8; border-radius: 12px; padding: 20px; text-align: left; margin: 20px 0;
@@ -28,10 +29,10 @@
         .card-box {
             background: linear-gradient(135deg, #130121 0%, #3d0537 100%);
             border: 2px solid #9b00e8; border-radius: 12px; padding: 25px; margin: 20px 0; min-height: 150px;
-            box-shadow: 0 0 15px rgba(155, 0, 232, 0.3);
+            box-shadow: 0 0 15px rgba(155, 0, 232, 0.3); display: flex; flex-direction: column; justify-content: center;
         }
         .card-type { font-weight: bold; color: #ff2a6d; letter-spacing: 2px; margin-bottom: 15px; font-size: 16px; text-transform: uppercase;}
-        .card-text { font-size: 18px; line-height: 1.5; color: #ffe6ee; white-space: pre-line; }
+        .card-text { font-size: 18px; line-height: 1.5; color: #ffe6ee; white-space: pre-line; word-wrap: break-word; }
 
         .phase-block { background: #0d021a; border: 1px solid #3d0537; border-radius: 10px; padding: 12px; margin: 15px 0; text-align: left; }
         .phase-title { font-weight: bold; color: #ffb7b2; font-size: 13px; margin-bottom: 8px; display: flex; justify-content: space-between; }
@@ -39,9 +40,18 @@
         .btn-v { background: linear-gradient(90deg, #2c3e50, #3498db); font-size: 14px; padding: 10px; margin: 0;}
         .btn-d { background: linear-gradient(90deg, #d35400, #e67e22); font-size: 14px; padding: 10px; margin: 0;}
         
+        .btn-dice { background: linear-gradient(90deg, #8a2387, #e94057); margin: 0;}
         .btn-success { background: linear-gradient(90deg, #27ae60, #2ecc71); font-size: 18px; }
         .btn-danger { background: linear-gradient(90deg, #c0392b, #e74c3c); font-size: 18px; }
-        
+        .btn-abort { background: #111; border: 1px solid #ff2a6d; font-size: 14px; margin-top: 25px; color: #ff2a6d; }
+        .btn-edit { background: #1a0326; border: 1px solid #9b00e8; color: #9b00e8; font-size: 14px; padding: 12px; margin-top: 15px; border-radius: 8px;}
+
+        .editor-container {
+            background: #100121; border: 2px solid #9b00e8; border-radius: 12px; padding: 20px; text-align: left; margin: 20px 0;
+        }
+        .card-list-item { background: #1a0433; padding: 10px; border-radius: 6px; margin: 8px 0; font-size: 13px; display: flex; flex-direction: column; gap: 8px; border-left: 3px solid #ff2a6d; }
+        .btn-delete-card { background: #c0392b; color: white; width: auto; padding: 4px 8px; margin: 0; font-size: 11px; border-radius: 4px; }
+
         .turn-indicator { font-size: 16px; margin: 15px 0; color: #ffb7b2; font-weight: bold; background: #130224; padding: 10px; border-radius: 8px; border: 1px solid #9b00e8; }
         .score-indicator { font-size: 14px; margin: 15px 0; color: #fff; font-weight: bold; background: #1f0438; padding: 10px; border-radius: 8px; border: 1px solid #ff2a6d; }
         .gender-selector { display: flex; gap: 10px; margin: 10px 0; }
@@ -49,9 +59,27 @@
         .selector-btn.active { background: #ff2a6d; border-color: #ff2a6d; font-weight: bold; }
         
         .room-sticky-badge { background: #130224; padding: 10px; border-radius: 8px; font-weight: bold; color: #9b00e8; border: 1px solid #9b00e8; font-size: 14px; margin-bottom: 15px; display: none; }
+        
+        #timer-container { display: none; margin: 15px 0; background: #130224; border-radius: 8px; padding: 10px; border: 1px solid #9b00e8;}
+        #timer-display { font-size: 32px; font-weight: bold; color: #ff2a6d; font-family: monospace; }
+        .timer-btn { background: #27ae60; margin-top: 5px; font-size: 14px; padding: 8px; }
+
+        #roulette-overlay {
+            position: fixed; top:0; left:0; width:100vw; height:100vh;
+            background: rgba(5,1,13,0.95); display:flex; flex-direction:column;
+            justify-content:center; align-items:center; z-index:9999; display:none;
+        }
+        .spinner { width: 80px; height: 80px; border: 8px solid #222; border-top: 8px solid #9b00e8; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
+    <div id="roulette-overlay">
+        <div class="spinner"></div>
+        <h2 id="roulette-title" style="color:#9b00e8;">CONECTANDO CHAMADA...</h2>
+        <p style="color:#aaa;">Sorteando o comandante da rodada remota!</p>
+    </div>
+
     <div class="container">
         <h1 style="color: #9b00e8; text-shadow: 0 0 10px rgba(155,0,232,0.5);">🌐 Conexão À Distância</h1>
         <div class="room-sticky-badge" id="persistent-room-badge">CONECTANDO...</div>
@@ -65,13 +93,35 @@
             <button onclick="confirmExistingRoom()" style="background: #111; border: 1px solid #9b00e8; color: #9b00e8;">➡️ ENTRAR NA SALA DO PAR</button>
         </div>
 
-        <!-- TELA 1: LOGIN -->
+        <!-- TELA 1: LOGIN E TIPO DE JOGO -->
         <div id="login-screen" style="display: none;">
             <div class="gender-selector" id="gender-btn-container">
                 <button type="button" class="selector-btn" id="btn-H" onclick="setGender('H')">Homem 🧠</button>
                 <button type="button" class="selector-btn" id="btn-M" onclick="setGender('M')">Mulher 👑</button>
             </div>
             <input type="text" id="username" placeholder="Digite seu Nome">
+
+            <div id="game-selection-wrapper">
+                <label style="font-size: 11px; color:#aaa; display:block; text-align:left; margin: 15px 0 2px 0; text-transform: uppercase; font-weight: bold;">Selecione o Jogo da Noite:</label>
+                <select id="game-type" onchange="toggleGameSetup()">
+                    <option value="cards">📄 Baralho À Distância (Verdade/Desafio)</option>
+                    <option value="dice">🎲 Dados Eróticos na Câmera</option>
+                    <option value="time">⏱️ Desafio de Resistência no Vídeo</option>
+                    <option value="never">🥂 Eu Nunca Picante (Bebidas)</option>
+                </select>
+
+                <div id="dice-category-setup" style="display: none;">
+                    <label style="font-size: 11px; color:#aaa; display:block; text-align:left; margin: 10px 0 2px 0; text-transform: uppercase; font-weight: bold;">Categoria do Dado:</label>
+                    <select id="dice-category">
+                        <option value="all">🔀 Misturar Todos (Aleatório)</option>
+                        <option value="acao_corpo">🎯 Ação & Câmera</option>
+                        <option value="posicao_local">📍 Ângulo & Posição</option>
+                        <option value="brinquedos_acessorios">🧸 Brinquedos & Vídeo</option>
+                        <option value="clima_intensidade">⚠️ Clima Remoto</option>
+                    </select>
+                </div>
+            </div>
+
             <button onclick="showInstructions()" style="margin-top: 20px;">Avançar ➡️</button>
         </div>
 
@@ -92,6 +142,7 @@
         <!-- TELA DE LOBBY -->
         <div id="lobby-screen" style="display: none;">
             <p style="color: #ffb7b2;">Aguardando o par entrar na sala remota...</p>
+            <div class="status-box" id="lobby-status-container" style="background:#130224; border:1px dashed #9b00e8; padding:15px; border-radius:8px; margin:15px 0;"></div>
             <button id="ready-btn" onclick="setReady()">Estou Pronto no Vídeo ✓</button>
         </div>
 
@@ -101,70 +152,177 @@
             <div class="turn-indicator" id="turn-text">Carregando...</div>
 
             <div id="category-selection-screen" style="display: none;">
-                <div class="phase-block">
-                    <div class="phase-title">
-                        <span>🧊 FASE 1: PROVOCAÇÃO REMOTA</span>
-                        <span id="label-f1-count">0/5</span>
+                <p id="action-instruction" style="color: #ccc; font-size: 15px;"></p>
+
+                <div id="deck-selectors-panel">
+                    <div class="phase-block">
+                        <div class="phase-title">
+                            <span>🧊 FASE 1: PROVOCAÇÃO REMOTA</span>
+                            <span id="label-f1-count">Seu progresso: 0/5</span>
+                        </div>
+                        <div class="vod-grid">
+                            <button class="btn-v" onclick="draw('fase1', 'verdade')">🤔 Verdade</button>
+                            <button class="btn-d" onclick="draw('fase1', 'desafio')">😈 Desafio</button>
+                        </div>
                     </div>
-                    <div class="vod-grid">
-                        <button class="btn-v" onclick="draw('fase1', 'verdade')">🤔 Verdade</button>
-                        <button class="btn-d" onclick="draw('fase1', 'desafio')">😈 Desafio</button>
+
+                    <div class="phase-block">
+                        <div class="phase-title">
+                            <span>🔥 FASE 2: EXIBIÇÃO & VÍDEO</span>
+                            <span id="label-f2-count">Bloqueado</span>
+                        </div>
+                        <div class="vod-grid">
+                            <button class="btn-v" id="btn-f2-v" onclick="draw('fase2', 'verdade')" disabled>🤔 Verdade</button>
+                            <button class="btn-d" id="btn-f2-d" onclick="draw('fase2', 'desafio')" disabled>😈 Desafio</button>
+                        </div>
+                    </div>
+
+                    <div class="phase-block">
+                        <div class="phase-title">
+                            <span>👅 FASE 3: ORGÁSMO GUIADO</span>
+                            <span id="label-f3-count">Bloqueado</span>
+                        </div>
+                        <div class="vod-grid">
+                            <button class="btn-v" id="btn-f3-v" onclick="draw('fase3', 'verdade')" disabled>🤔 Verdade</button>
+                            <button class="btn-d" id="btn-f3-d" onclick="draw('fase3', 'desafio')" disabled>😈 Desafio</button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="phase-block">
-                    <div class="phase-title">
-                        <span>🔥 FASE 2: EXIBIÇÃO & VÍDEO</span>
-                        <span id="label-f2-count">Bloqueado</span>
-                    </div>
-                    <div class="vod-grid">
-                        <button class="btn-v" id="btn-f2-v" onclick="draw('fase2', 'verdade')" disabled>🤔 Verdade</button>
-                        <button class="btn-d" id="btn-f2-d" onclick="draw('fase2', 'desafio')" disabled>😈 Desafio</button>
-                    </div>
+                <div id="controls-dice" style="display: none; margin: 20px 0;">
+                    <button class="btn-dice" onclick="rollDice()" style="padding: 18px; font-size: 18px;">🎲 ROLAR DADOS ERÓTICOS</button>
+                </div>
+                <div id="controls-time" style="display: none; margin: 20px 0;">
+                    <button class="btn-dice" onclick="drawTime()" style="background: linear-gradient(90deg, #d35400, #e67e22); padding: 18px; font-size: 18px;">⏱️ SORTEAR DESAFIO DE RESISTÊNCIA</button>
+                </div>
+                <div id="controls-never" style="display: none; margin: 20px 0;">
+                    <button class="btn-dice" onclick="drawNever()" style="background: linear-gradient(90deg, #2c3e50, #3498db); padding: 18px; font-size: 18px;">🥂 SORTEAR "EU NUNCA" PICANTE</button>
                 </div>
 
-                <div class="phase-block">
-                    <div class="phase-title">
-                        <span>👅 FASE 3: ORGÁSMO GUIADO</span>
-                        <span id="label-f3-count">Bloqueado</span>
-                    </div>
-                    <div class="vod-grid">
-                        <button class="btn-v" id="btn-f3-v" onclick="draw('fase3', 'verdade')" disabled>🤔 Verdade</button>
-                        <button class="btn-d" id="btn-f3-d" onclick="draw('fase3', 'desafio')" disabled>😈 Desafio</button>
-                    </div>
-                </div>
+                <button class="btn-edit" id="btn-open-editor" onclick="openCardEditor()">📝 GERENCIAR BARALHO REMOTO</button>
+                <button class="btn-abort" id="end-game-btn" onclick="endGame()">🏁 FINALIZAR PARTIDA</button>
             </div>
 
-            <!-- EXIBIÇÃO DA CARTA -->
+            <!-- TELA DO EDITOR -->
+            <div id="card-editor-screen" class="editor-container" style="display: none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #3d0537; padding-bottom:10px; margin-bottom:15px;">
+                    <h4 style="color:#9b00e8; margin:0;">🛠️ Editor de Baralho Remoto</h4>
+                    <button onclick="closeCardEditor()" style="width:auto; padding:5px 10px; margin:0; background:#333; font-size:12px;">Voltar ↩</button>
+                </div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:12px;">
+                    <select id="editor-phase" onchange="refreshEditorList()">
+                        <option value="fase1">Fase 1 (Provocação)</option>
+                        <option value="fase2">Fase 2 (Exibição)</option>
+                        <option value="fase3">Fase 3 (Orgásmo Guiado)</option>
+                    </select>
+                    <select id="editor-type" onchange="refreshEditorList()">
+                        <option value="verdade">Verdades</option>
+                        <option value="desafio">Desafios</option>
+                    </select>
+                </div>
+                <div style="background:#130224; padding:12px; border-radius:6px; margin-bottom:15px; border:1px dashed #9b00e8;">
+                    <label style="font-size:11px; color:#bbb;">Quem deve executar esse desafio no vídeo?</label>
+                    <select id="new-card-executor" style="padding: 10px; margin: 5px 0 10px 0;"></select>
+                    <textarea id="new-card-text" placeholder="Digite a nova carta..."></textarea>
+                    <button onclick="addNewCardToArray()" style="margin-top:5px; padding:10px;">Salvar Carta Remota</button>
+                </div>
+                <div id="editor-cards-list" style="max-height:220px; overflow-y:auto; border:1px solid #3d0537; padding:5px; background:#05010d; border-radius:6px;"></div>
+            </div>
+
+            <!-- EXIBIÇÃO DA CARTA E BOTOES -->
             <div id="card-view-screen" style="display: none;">
                 <div class="card-box">
                     <div class="card-type" id="card-title">DESAFIO</div>
                     <div class="card-text" id="card-text">Carregando...</div>
                 </div>
-                <div style="margin-top: 20px;">
-                    <button class="btn-success" onclick="finishTurn(true)">Cumprido na Câmera ✓</button>
-                    <button class="btn-danger" onclick="finishTurn(false)">Pular Rodada 🛑</button>
+
+                <div id="timer-container">
+                    <div id="timer-display">00:00</div>
+                    <button id="trigger-timer-btn" class="timer-btn" onclick="startCountdownFromServer()">Iniciar Cronômetro ▶</button>
+                </div>
+
+                <div id="finish-turn-controls" style="margin-top: 20px;">
+                    <div id="control-buttons-layout">
+                        <button class="btn-success" id="btn-exec" onclick="finishTurnWithGender(true)">Cumprido na Câmera ✓</button>
+                        <button class="btn-danger" id="btn-noexec" onclick="triggerPunishment()">Pular Rodada (Castigo 🛑)</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        // 🎵 MOTOR SINTÉTICO DE EFEITOS SONOROS NATIVOS
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSFX(type) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const now = audioCtx.currentTime;
+
+            if (type === 'carta') {
+                const bufferSize = audioCtx.sampleRate * 0.2;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buffer;
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.value = 2500;
+                filter.Q.value = 1.5;
+
+                const gain = audioCtx.createGain();
+                gain.gain.setValueAtTime(0.01, now);
+                for (let i = 0; i < 5; i++) {
+                    let t = now + (i * 0.035);
+                    gain.gain.setValueAtTime(0.25, t);
+                    gain.gain.exponentialRampToValueAtTime(0.02, t + 0.03);
+                }
+                noise.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
+                noise.start(now); noise.stop(now + 0.2);
+
+            } else if (type === 'roleta') {
+                const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+                osc.type = 'square'; osc.frequency.setValueAtTime(500, now);
+                gain.gain.setValueAtTime(0.12, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.08);
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(now); osc.stop(now + 0.08);
+
+            } else if (type === 'sucesso') {
+                [523.25, 659.25, 783.99].forEach((freq, idx) => {
+                    const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+                    osc.type = 'sine'; osc.frequency.setValueAtTime(freq, now + (idx * 0.08));
+                    gain.gain.setValueAtTime(0.15, now + (idx * 0.08));
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + (idx * 0.08) + 0.4);
+                    osc.connect(gain); gain.connect(audioCtx.destination);
+                    osc.start(now + (idx * 0.08)); osc.stop(now + (idx * 0.08) + 0.4);
+                });
+
+            } else if (type === 'timerBeep') {
+                const osc = audioCtx.createOscillator(); const gain = audioCtx.createGain();
+                osc.type = 'sine'; osc.frequency.setValueAtTime(880, now);
+                gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0.01, now + 0.1);
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(now); osc.stop(now + 0.1);
+            }
+        }
+
         const socket = io({ transports: ['websocket', 'polling'] });
-        let myName = "", selectedGender = "", activeRoomId = "", activeGenderToken = "H";
+        let myName = "", selectedGender = "", activeRoomId = "", currentCardDuration = 0;
+        let isAnimating = false, pendingState = null, serverCardsBackup = {};
 
         function requestNewRoom() { socket.emit('create_room'); }
         socket.on('room_created', (data) => {
             activeRoomId = data.room_id;
             document.getElementById('room-panel').style.display = 'none';
             document.getElementById('login-screen').style.display = 'block';
-            document.getElementById('persistent-room-badge').innerText = `SALA REMOTA: ${activeRoomId}`;
-            document.getElementById('persistent-room-badge').style.display = 'block';
+            showStickyBadge(`SALA REMOTA: ${activeRoomId} 🗝️`);
         });
 
         function confirmExistingRoom() {
             const code = document.getElementById('input-room-code').value.trim().toUpperCase();
-            if(code.length !== 4) return alert("Código deve ter 4 letras!");
+            if(code.length !== 4) return alert("Código deve ter 4 dígitos!");
             activeRoomId = code;
             socket.emit('check_room_status', { room_id: activeRoomId });
         }
@@ -173,12 +331,17 @@
             if(data.valid) {
                 document.getElementById('room-panel').style.display = 'none';
                 document.getElementById('login-screen').style.display = 'block';
-                document.getElementById('persistent-room-badge').innerText = `SALA CONECTADA: ${activeRoomId}`;
-                document.getElementById('persistent-room-badge').style.display = 'block';
+                document.getElementById('game-selection-wrapper').style.display = 'none';
+                showStickyBadge(`SALA CONECTADA: ${activeRoomId} ✓`);
                 if(data.creator_gender === 'H') setGender('M');
                 else if(data.creator_gender === 'M') setGender('H');
             } else { alert("Sala não encontrada!"); }
         });
+
+        function showStickyBadge(t) {
+            const b = document.getElementById('persistent-room-badge');
+            if(b) { b.innerText = t; b.style.display = 'block'; }
+        }
 
         function setGender(g) {
             selectedGender = g;
@@ -186,52 +349,168 @@
             document.getElementById('btn-M').classList.toggle('active', g === 'M');
         }
 
+        function toggleGameSetup() {
+            const type = document.getElementById("game-type").value;
+            document.getElementById("dice-category-setup").style.display = (type === "dice") ? "block" : "none";
+        }
+
         function showInstructions() {
             myName = document.getElementById('username').value.trim();
-            if(!selectedGender || !myName) return alert("Preencha nome e gênero!");
+            if(!selectedGender || !myName) return alert("Preencha seu nome e gênero!");
             document.getElementById('login-screen').style.display = 'none';
             document.getElementById('instruction-screen').style.display = 'block';
         }
 
         function joinGame() {
+            const gameType = document.getElementById('game-type').value;
+            const diceCategory = document.getElementById('dice-category').value;
             document.getElementById('instruction-screen').style.display = 'none';
-            socket.emit('join_game', { room_id: activeRoomId, name: myName, gender: selectedGender });
+            socket.emit('join_game', { room_id: activeRoomId, name: myName, gender: selectedGender, game_type: gameType, dice_category: diceCategory });
         }
 
         function setReady() { socket.emit('player_ready', { room_id: activeRoomId }); }
-        function draw(fase, tipo) { socket.emit('draw_card', { room_id: activeRoomId, fase: fase, type: tipo }); }
-        function finishTurn(exec) { socket.emit('next_turn', { room_id: activeRoomId, executed: exec, my_gender: activeGenderToken }); }
+        
+        function draw(fase, tipo) { playSFX('carta'); socket.emit('draw_card', { room_id: activeRoomId, fase: fase, type: tipo }); }
+        function rollDice() { playSFX('roleta'); socket.emit('roll_dice', { room_id: activeRoomId }); }
+        function drawTime() { playSFX('carta'); socket.emit('draw_time_challenge', { room_id: activeRoomId }); }
+        function drawNever() { playSFX('carta'); socket.emit('draw_never_question', { room_id: activeRoomId }); }
+        function triggerPunishment() { socket.emit('trigger_punishment', { room_id: activeRoomId }); }
+
+        function finishTurnWithGender(exec) {
+            if(exec) playSFX('sucesso');
+            socket.emit('next_turn', { room_id: activeRoomId, executed: exec, my_gender: selectedGender });
+        }
+
+        function endGame() {
+            if(confirm("Finalizar a partida e ver os pontos?")) socket.emit('end_game', { room_id: activeRoomId });
+        }
+
+        function openCardEditor() {
+            document.getElementById('category-selection-screen').style.display = 'none';
+            document.getElementById('card-editor-screen').style.display = 'block';
+            let dropdown = document.getElementById('new-card-executor');
+            dropdown.innerHTML = (selectedGender === "H") ? `<option value="M">Mulher executa</option><option value="A">Ambos</option>` : `<option value="H">Homem executa</option><option value="A">Ambos</option>`;
+            socket.emit('request_cards_dataset', { room_id: activeRoomId });
+        }
+
+        function closeCardEditor() {
+            document.getElementById('card-editor-screen').style.display = 'none';
+            document.getElementById('category-selection-screen').style.display = 'block';
+        }
+
+        socket.on('receive_cards_dataset', (data) => { serverCardsBackup = data.deck; refreshEditorList(); });
+
+        function refreshEditorList() {
+            let phase = document.getElementById('editor-phase').value;
+            let type = document.getElementById('editor-type').value;
+            let container = document.getElementById('editor-cards-list'); container.innerHTML = "";
+
+            if(serverCardsBackup && serverCardsBackup[phase] && serverCardsBackup[phase][type]) {
+                let pool = (selectedGender === "H") ? (serverCardsBackup[phase][type]["M"] || []) : (serverCardsBackup[phase][type]["H"] || []);
+                pool.forEach((txt, idx) => {
+                    container.innerHTML += `<div class="card-list-item"><span>${txt}</span><button class="btn-delete-card" onclick="deleteCardFromServer('${phase}','${type}','${selectedGender==='H'?'M':'H'}',${idx})">Excluir</button></div>`;
+                });
+            }
+        }
+
+        function addNewCardToArray() {
+            let txt = document.getElementById('new-card-text').value.trim();
+            if(!txt) return alert("Escreva a carta!");
+            socket.emit('add_custom_card', { room_id: activeRoomId, phase: document.getElementById('editor-phase').value, type: document.getElementById('editor-type').value, executor: document.getElementById('new-card-executor').value, text: txt });
+            document.getElementById('new-card-text').value = "";
+        }
+
+        function deleteCardFromServer(p, t, o, i) {
+            if(confirm("Apagar carta?")) socket.emit('delete_custom_card', { room_id: activeRoomId, phase: p, type: t, origin: o, index: i });
+        }
+
+        function startCountdownFromServer() {
+            if (currentCardDuration > 0) socket.emit('start_synced_timer', { room_id: activeRoomId, duration: currentCardDuration });
+        }
+
+        socket.on('start_roulette_animation', (data) => {
+            playSFX('roleta');
+            document.getElementById('roulette-overlay').style.display = 'flex';
+            setTimeout(() => { document.getElementById('roulette-overlay').style.display = 'none'; }, 2500);
+        });
+
+        socket.on('trigger_visual_timer', (data) => {
+            let timeLeft = data.duration;
+            document.getElementById('timer-container').style.display = 'block';
+            let countdownInterval = setInterval(() => {
+                if (timeLeft <= 0) { clearInterval(countdownInterval); document.getElementById('timer-display').innerText = "FIM DA RODADA! 🔥"; return; }
+                timeLeft--;
+                if(timeLeft <= 3 && timeLeft > 0) playSFX('timerBeep');
+                let m = Math.floor(timeLeft / 60), s = timeLeft % 60;
+                document.getElementById('timer-display').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+            }, 1000);
+        });
 
         socket.on('game_update', function(state) {
             document.getElementById('live-score-board').innerText = state.score_board;
-            activeGenderToken = state.active_gender;
+            if(state.room_id) showStickyBadge(`SALA ATIVA REMOTA: ${state.room_id} 🗝️`);
 
             if (state.game_started) {
+                document.getElementById('room-panel').style.display = 'none';
+                document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('lobby-screen').style.display = 'none';
                 document.getElementById('game-screen').style.display = 'block';
 
-                let f1 = state.rounds_played[activeGenderToken]["fase1"] || 0;
-                let f2 = state.rounds_played[activeGenderToken]["fase2"] || 0;
+                let activeGender = state.active_gender || "H";
+                let f1 = state.rounds_played[activeGender]["fase1"] || 0;
+                let f2 = state.rounds_played[activeGender]["fase2"] || 0;
 
-                document.getElementById('label-f1-count').innerText = `${f1}/5`;
+                document.getElementById('label-f1-count').innerText = `Seu progresso: ${f1}/5`;
                 document.getElementById('btn-f2-v').disabled = document.getElementById('btn-f2-d').disabled = (f1 < 5);
-                document.getElementById('label-f2-count').innerText = f1 >= 5 ? `${f2}/5` : "Bloqueado";
+                document.getElementById('label-f2-count').innerText = f1 >= 5 ? `Liberado (${f2}/5)` : "Bloqueado";
                 document.getElementById('btn-f3-v').disabled = document.getElementById('btn-f3-d').disabled = (f2 < 5 || f1 < 5);
+                document.getElementById('label-f3-count').innerText = (f2 >= 5 && f1 >= 5) ? "Liberado ✓" : "Bloqueado";
+
+                document.getElementById("deck-selectors-panel").style.display = (state.game_type === "cards") ? "block" : "none";
+                document.getElementById("controls-dice").style.display = (state.game_type === "dice") ? "block" : "none";
+                document.getElementById("controls-time").style.display = (state.game_type === "time") ? "block" : "none";
+                document.getElementById("controls-never").style.display = (state.game_type === "never") ? "block" : "none";
 
                 if (state.card && state.card.text) {
                     document.getElementById('category-selection-screen').style.display = 'none';
                     document.getElementById('card-view-screen').style.display = 'block';
                     document.getElementById('card-title').innerText = state.card.type;
                     document.getElementById('card-text').innerText = state.card.text;
+
+                    let layout = document.getElementById('control-buttons-layout');
+                    if (state.card.fase_key === 'punishment') {
+                        layout.innerHTML = `<button class="btn-danger" onclick="finishTurnWithGender(false)">Castigo Pago ✓</button>`;
+                    } else if (state.card.fase_key === 'game_over') {
+                        layout.innerHTML = `<button class="btn-success" onclick="window.location.reload()">🔄 Criar Nova Sala Remota</button>`;
+                    } else {
+                        layout.innerHTML = `<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"><button class="btn-success" onclick="finishTurnWithGender(true)">Cumprido na Câmera ✓</button><button class="btn-danger" onclick="triggerPunishment()">Pular Rodada (Castigo 🛑)</button></div>`;
+                    }
+
+                    if (state.card.duration > 0 && state.card.fase_key !== 'game_over') {
+                        currentCardDuration = state.card.duration;
+                        document.getElementById('timer-container').style.display = 'block';
+                        let m = Math.floor(currentCardDuration / 60), s = currentCardDuration % 60;
+                        document.getElementById('timer-display').innerText = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+                    } else { document.getElementById('timer-container').style.display = 'none'; }
+
+                    document.getElementById('finish-turn-controls').style.display = (state.is_my_turn || state.card.fase_key === 'game_over') ? 'block' : 'none';
+                    document.getElementById('turn-text').innerText = state.card.fase_key === 'game_over' ? "🏁 NOITE CONCLUÍDA" : `👉 VEZ DE: ${state.current_player_name.toUpperCase()}`;
                 } else {
                     document.getElementById('category-selection-screen').style.display = 'block';
                     document.getElementById('card-view-screen').style.display = 'none';
+                    document.getElementById('turn-text').innerText = `👉 VEZ DE: ${state.current_player_name.toUpperCase()}`;
+                    document.getElementById('end-game-btn').style.display = state.is_my_turn ? 'block' : 'none';
                 }
-                document.getElementById('turn-text').innerText = `👉 VEZ DE: ${state.current_player_name.toUpperCase()}`;
             } else {
                 document.getElementById('lobby-screen').style.display = 'block';
+                let container = document.getElementById('lobby-status-container');
+                if(container && state.players_status) {
+                    container.innerHTML = "";
+                    state.players_status.forEach(t => container.innerHTML += `<div>${t}</div>`);
+                }
             }
         });
+        socket.on('error', (data) => { alert(data.msg); window.location.reload(); });
     </script>
 </body>
 </html>
